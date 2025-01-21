@@ -13,6 +13,10 @@
     months = ("Ledna", "Února", "Března", "Dubna", "Května", "Června", "Července", "Srpna", "Září", "Října", "Listopadu", "Prosince")
   } else if lang == "pt" {
     months = ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
+  } else if lang == "sk" {
+    months = ("Január", "Február", "Marec", "Apríl", "Máj", "Jún", "Júl", "August", "September", "Okt", "November", "December")
+  } else if lang == "pl" {
+    months = ("Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień")
   } else {
     return ""
   }
