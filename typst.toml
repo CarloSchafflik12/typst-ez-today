@@ -1,6 +1,6 @@
 [package]
 name = "ez-today"
-version = "0.3.0"
+version = "1.0.0"
 entrypoint = "ez-today.typ"
 authors = ["Carlo Schafflik"]
 license = "MIT"

@@ -28,9 +28,16 @@
   if custom-months.len() == 12 {
     use-custom = true
   }
+
+  // Zero-padding the month number
+  let month-int = datetime.today().month()
+  let month-int-string = [#month-int]
+  if month-int <= 9 {
+      month-int-string = [0] + month-int-string
+  }
   
   if format == "ISO" {
-    return [#datetime.today().year()-#datetime.today().month()-#datetime.today().day()]
+    return [#datetime.today().year()-#month-int-string\-#datetime.today().day()]
   }
   
   for f in format {
@@ -42,8 +49,10 @@
       } else {
         [#get-month(lang, datetime.today().month())]
       }
-    } else if f == "m" {
+    } else if f == "n" {
       [#datetime.today().month()]
+    } else if f == "m" {
+      [#month-int-string]
     } else if f == "Y" {
       [#datetime.today().year()]
     } else if f == "y" {

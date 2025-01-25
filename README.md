@@ -11,7 +11,7 @@ German, English, French, Italian, Czech, Portuguese, Slovakian and Polish months
 The usage is very simple, because there is only the `today()` function.
 
 ```typ
-#import "@preview/ez-today:0.3.0"
+#import "@preview/ez-today:1.0.0"
 
 // To get the current date use this
 #ez-today.today()
@@ -60,10 +60,13 @@ You can choose one of the included languages with the `lang` argument:
 You can also change the format of the output with the `format` argument. Pass any string you want here, but know that the following characters will be replaced with the following:
 
 - `d` &mdash; The current day as a decimal
-- `m` &mdash; The current month as a decimal (`lang` argument does nothing)
+- `n` &mdash; The current month as a decimal (`lang` argument does nothing)
+- `m` &mdash; The current month as a zero-padded decimal (`lang` argument does nothing)
 - `M` &mdash; The current month as a string with either the selected language or the custom array
 - `y` &mdash; The current year as a decimal with the last two numbers
 - `Y` &mdash; The current year as a decimal
+
+If you want the current date in ISO 8601 format, you can do so by passing `ISO` to the `format` argument.
 
 Here are some examples:
 
@@ -86,10 +89,11 @@ Use the `custom-months` argument to give each month a custom name. You can add a
 
 ## Changelog
 
-### 0.3.1
+### 1.0.0
 
 - Added support for Slovakian and Polish language by ShinoYumi
 - Added function for ISO 8601 format by ShinoYumi
+- Month numbers with only one digit are now zero-padded
 
 ### 0.3.0
 
