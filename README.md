@@ -4,7 +4,7 @@ Simply displays the current date with easy to use customization.
 
 ## Included languages
 
-German, English, French, Italian, Czech and Portuguese months can be used out of the box. If you want to use a language that is not included, you can easily add it yourself. This is shown in the customization section below.
+German, English, French, Italian, Czech, Portuguese, Slovakian and Polish months can be used out of the box. If you want to use a language that is not included, you can easily add it yourself. This is shown in the customization section below.
 
 ## Usage
 
@@ -53,6 +53,8 @@ You can choose one of the included languages with the `lang` argument:
 #ez-today.today(lang: "it")   // 11. Ottobre 2024
 #ez-today.today(lang: "cs")   // 11. Října 2024
 #ez-today.today(lang: "pt")   // 11. Outubro 2024
+#ez-today.today(lang: "sk")   // 11. Októbra 2024
+#ez-today.today(lang: "pl")   // 11. Października 2024
 ```
 
 You can also change the format of the output with the `format` argument. Pass any string you want here, but know that the following characters will be replaced with the following:
@@ -66,6 +68,7 @@ You can also change the format of the output with the `format` argument. Pass an
 Here are some examples:
 
 ```typ
+#ez-today.today(format:"ISO")                   // 2024-10-11
 #ez-today.today(lang: "en", format: "M d Y")    // October 11 2024
 #ez-today.today(format: "m-d-y")                // 10-11-24
 #ez-today.today(format: "d/m")                  // 11/10
@@ -82,6 +85,11 @@ Use the `custom-months` argument to give each month a custom name. You can add a
 ```
 
 ## Changelog
+
+### 0.3.1
+
+- Added support for Slovakian and Polish language by ShinoYumi
+- Added function for ISO 8601 format by ShinoYumi
 
 ### 0.3.0
 
