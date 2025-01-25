@@ -13,18 +13,26 @@
     months = ("Ledna", "Února", "Března", "Dubna", "Května", "Června", "Července", "Srpna", "Září", "Října", "Listopadu", "Prosince")
   } else if lang == "pt" {
     months = ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
+  } else if lang == "sk" {
+    months = ("Januára", "Februára", "Marca", "Apríla", "Mája", "Júna", "Júla", "Augusta", "Septembera", "Októbra", "Novembra", "Decembra")
+  } else if lang == "pl" {
+    months = ("Stycznia", "Lutego", "Marca", "Kwietnia", "Maja", "Czerwca", "Lipca", "Sierpnia", "Września", "Października", "Listopada", "Grudnia")
   } else {
     return ""
   }
 
   months.at(month - 1)
 }
-
 #let today(lang: "de", format: "d. M Y", custom-months: ()) = {
-  let use-custom = false;
+  let use-custom = false
   if custom-months.len() == 12 {
-    use-custom = true;
+    use-custom = true
   }
+  
+  if format == "ISO" {
+    return [#datetime.today().year()-#datetime.today().month()-#datetime.today().day()]
+  }
+  
   for f in format {
     if f == "d" {
       [#datetime.today().day()]
@@ -40,8 +48,7 @@
       [#datetime.today().year()]
     } else if f == "y" {
       [#datetime.today().display("[year repr:last_two]")]
-    }
-    else {
+    } else {
       f
     }
   }
