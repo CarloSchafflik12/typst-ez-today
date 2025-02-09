@@ -35,14 +35,23 @@
   if month-int <= 9 {
       month-int-string = [0] + month-int-string
   }
+
+  // Zero-padding the day number
+  let day-int = datetime.today().day()
+  let day-int-string = [#day-int]
+  if day-int <= 9 {
+      day-int-string = [0] + day-int-string
+  }
   
   if format == "ISO" {
-    return [#datetime.today().year()-#month-int-string\-#datetime.today().day()]
+    return [#datetime.today().year()-#month-int-string\-#day-int-string]
   }
   
   for f in format {
     if f == "d" {
       [#datetime.today().day()]
+    } else if f == "D" {
+      [#day-int-string]
     } else if f == "M" {
       if use-custom {
         [#custom-months.at(datetime.today().month() - 1)]
