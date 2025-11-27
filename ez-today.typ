@@ -10,7 +10,9 @@
   } else if lang == "it" {
     months = ("Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre")
   } else if lang == "cs" {
-    months = ("Ledna", "Února", "Března", "Dubna", "Května", "Června", "Července", "Srpna", "Září", "Října", "Listopadu", "Prosince")
+    months = ("ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince")
+  } else if lang == "cs2" {
+    months = ("Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec")
   } else if lang == "pt" {
     months = ("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
   } else if lang == "sk" {
@@ -23,6 +25,20 @@
 
   months.at(month - 1)
 }
+
+#let get-en-suffix(day) = {
+  if day == 1 or day == 21 or day == 31 {
+    return "st"
+  }
+  if day == 2 or day == 22 {
+    return "nd"
+  }
+  if day == 3 or day == 23 {
+    return "rd"
+  }
+  return "th"
+}
+
 #let today(lang: "de", format: "d. M Y", custom-months: ()) = {
   let use-custom = false
   if custom-months.len() == 12 {
@@ -49,24 +65,29 @@
   
   for f in format {
     if f == "d" {
-      [#datetime.today().day()]
+      [#day-int]
     } else if f == "D" {
       [#day-int-string]
     } else if f == "M" {
       if use-custom {
-        [#custom-months.at(datetime.today().month() - 1)]
+        [#custom-months.at(month-int - 1)]
       } else {
-        [#get-month(lang, datetime.today().month())]
+        [#get-month(lang, month-int)]
       }
     } else if f == "n" {
-      [#datetime.today().month()]
+      [#month-int]
     } else if f == "m" {
       [#month-int-string]
     } else if f == "Y" {
       [#datetime.today().year()]
     } else if f == "y" {
       [#datetime.today().display("[year repr:last_two]")]
-    } else {
+    } else if f == "S" {
+      [#get-en-suffix(day-int)]
+    } else if f == "s" {
+      [$zws^#get-en-suffix(day-int)$]
+    }
+    else {
       f
     }
   }

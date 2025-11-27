@@ -11,7 +11,7 @@ German, English, French, Italian, Czech, Portuguese, Slovakian and Polish months
 The usage is very simple, because there is only the `today()` function.
 
 ```typ
-#import "@preview/ez-today:1.1.0"
+#import "@preview/ez-today:2.0.0"
 
 // To get the current date use this
 #ez-today.today()
@@ -33,7 +33,7 @@ Prints the current date with given arguments.
 
 **Arguments:**
 
-- `lang`: [`str`] &mdash; Select one of the included languages (de, en, fr, it, cs, pt).
+- `lang`: [`str`] &mdash; Select one of the included languages (de, en, fr, it, cs, cs2, sk, pt).
 - `format`: [`str`] &mdash; Specify the output format.
 - `custom-months`: [`array`] of [`str`] &mdash; Use custom names for each month. This array must have 12 entries. If this is used, the `lang` argument does nothing.
 
@@ -51,7 +51,7 @@ You can choose one of the included languages with the `lang` argument:
 #ez-today.today(lang: "en")   // 11. October 2024
 #ez-today.today(lang: "fr")   // 11. Octobre 2024
 #ez-today.today(lang: "it")   // 11. Ottobre 2024
-#ez-today.today(lang: "cs")   // 11. Října 2024
+#ez-today.today(lang: "cs")   // 11. října 2024 (use cs2 for uppercase month)
 #ez-today.today(lang: "pt")   // 11. Outubro 2024
 #ez-today.today(lang: "sk")   // 11. Októbra 2024
 #ez-today.today(lang: "pl")   // 11. Października 2024
@@ -66,6 +66,8 @@ You can also change the format of the output with the `format` argument. Pass an
 - `M` &mdash; The current month as a string with either the selected language or the custom array
 - `y` &mdash; The current year as a decimal with the last two numbers
 - `Y` &mdash; The current year as a decimal
+- `s` &mdash; The English ordinal suffix for the current day as an exponent
+- `S` &mdash; The English ordinal suffix for the current day as text
 
 If you want the current date in ISO 8601 format, you can do so by passing `ISO` to the `format` argument.
 
@@ -77,6 +79,8 @@ Here are some examples:
 #ez-today.today(format: "m-d-y")                // 10-11-24
 #ez-today.today(format: "d/m")                  // 11/10
 #ez-today.today(format: "d.m.Y")                // 11.10.2024
+#ez-today.today(lang: "en", format: "ds M")     // 11ᵗʰ October
+#ez-today.today(lang: "en", format: "dS M")     // 11th October
 ```
 
 Use the `custom-months` argument to give each month a custom name. You can add a new language or use short terms for each month.
@@ -89,6 +93,12 @@ Use the `custom-months` argument to give each month a custom name. You can add a
 ```
 
 ## Changelog
+
+### 2.0.0
+
+- Fix: The cs language mode now uses lowercase month names
+- Added cs2 language mode for Czech, which capitalizes month names with different declension
+- Added support for English ordinal suffixes as text or exponents (e.g. 21st, 21<sup>st</sup>) with the `S` and `s` format options
 
 ### 1.1.0
 

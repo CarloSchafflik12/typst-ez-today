@@ -13,3 +13,6 @@
 
 // Get the current date in the ISO 8601 format
 #ez-today.today(format: "ISO")
+
+// Use automatic English ordinal suffix (st, nd, rd, th)
+#ez-today.today(format: "ds M")
