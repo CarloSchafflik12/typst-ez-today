@@ -19,6 +19,8 @@
     months = ("Januára", "Februára", "Marca", "Apríla", "Mája", "Júna", "Júla", "Augusta", "Septembera", "Októbra", "Novembra", "Decembra")
   } else if lang == "pl" {
     months = ("Stycznia", "Lutego", "Marca", "Kwietnia", "Maja", "Czerwca", "Lipca", "Sierpnia", "Września", "Października", "Listopada", "Grudnia")
+  } else if lang == "se" {
+    months = ("januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december")
   } else {
     return ""
   }
@@ -85,7 +87,7 @@
     } else if f == "S" {
       [#get-en-suffix(day-int)]
     } else if f == "s" {
-      [$zws^#get-en-suffix(day-int)$]
+      [#super[#get-en-suffix(day-int)]]
     }
     else {
       f

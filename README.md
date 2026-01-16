@@ -4,7 +4,7 @@ Simply displays the current date with easy to use customization.
 
 ## Included languages
 
-German, English, French, Italian, Czech, Portuguese, Slovakian and Polish months can be used out of the box. If you want to use a language that is not included, you can easily add it yourself. This is shown in the customization section below.
+German, English, French, Italian, Czech, Portuguese, Slovakian, Swedish and Polish months can be used out of the box. If you want to use a language that is not included, you can easily add it yourself. This is shown in the customization section below.
 
 ## Usage
 
@@ -55,6 +55,7 @@ You can choose one of the included languages with the `lang` argument:
 #ez-today.today(lang: "pt")   // 11. Outubro 2024
 #ez-today.today(lang: "sk")   // 11. Októbra 2024
 #ez-today.today(lang: "pl")   // 11. Października 2024
+#ez-today.today(lang: "se")   // 11. oktober 2024
 ```
 
 You can also change the format of the output with the `format` argument. Pass any string you want here, but know that the following characters will be replaced with the following:

@@ -16,3 +16,6 @@
 
 // Use automatic English ordinal suffix (st, nd, rd, th)
 #ez-today.today(format: "ds M")
+
+// Specify a language
+#ez-today.today(lang: "se", format: "d M Y")
