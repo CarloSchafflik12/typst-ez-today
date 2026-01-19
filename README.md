@@ -11,7 +11,7 @@ German, English, French, Italian, Czech, Portuguese, Slovakian, Swedish and Poli
 The usage is very simple, because there is only the `today()` function.
 
 ```typ
-#import "@preview/ez-today:2.0.0"
+#import "@preview/ez-today:2.1.0"
 
 // To get the current date use this
 #ez-today.today()
@@ -94,6 +94,11 @@ Use the `custom-months` argument to give each month a custom name. You can add a
 ```
 
 ## Changelog
+
+### 2.1.0
+
+- Fix: The English ordinal suffixes are now displayed in the same font by Mathemalsky
+- Added Swedish language by Mathemalsky
 
 ### 2.0.0
 
