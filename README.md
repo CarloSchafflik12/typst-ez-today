@@ -26,15 +26,15 @@ Prints the current date with given arguments.
 ```typ
 #let today(
   lang: "de",
-  format: "d. M Y",
+  format: auto,
   custom-months: ()
 ) = { .. }
 ```
 
 **Arguments:**
 
-- `lang`: [`str`] &mdash; Select one of the included languages (de, en, fr, it, cs, cs2, sk, pt).
-- `format`: [`str`] &mdash; Specify the output format.
+- `lang`: [`str`] &mdash; Select one of the included languages (de, en, fr, it, cs, cs2, sk, pt, ja).
+- `format`: [`str`] or [`auto`] &mdash; Specify the output format. By default (`auto`), this adapts to the selected language (e.g., `"Y年n月d日"` for Japanese, and `"d. M Y"` for all other languages).
 - `custom-months`: [`array`] of [`str`] &mdash; Use custom names for each month. This array must have 12 entries. If this is used, the `lang` argument does nothing.
 
 ## Customization
@@ -56,6 +56,7 @@ You can choose one of the included languages with the `lang` argument:
 #ez-today.today(lang: "sk")   // 11. Októbra 2024
 #ez-today.today(lang: "pl")   // 11. Października 2024
 #ez-today.today(lang: "se")   // 11. oktober 2024
+#ez-today.today(lang: "ja")   // 2024年10月11日
 ```
 
 You can also change the format of the output with the `format` argument. Pass any string you want here, but know that the following characters will be replaced with the following:
