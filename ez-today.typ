@@ -21,6 +21,8 @@
     months = ("Stycznia", "Lutego", "Marca", "Kwietnia", "Maja", "Czerwca", "Lipca", "Sierpnia", "Września", "Października", "Listopada", "Grudnia")
   } else if lang == "se" {
     months = ("januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december")
+  } else if lang == "ja" {
+    months = ("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月")
   } else {
     return ""
   }
@@ -41,20 +43,27 @@
   return "th"
 }
 
-#let today(lang: "de", format: "d. M Y", custom-months: ()) = {
+#let today(lang: "de", format: auto, custom-months: ()) = {
+  
+  if format == auto {
+    if lang == "ja" {
+      format = "Y年n月d日" 
+    } else {
+      format = "d. M Y"
+    }
+  }
+
   let use-custom = false
   if custom-months.len() == 12 {
     use-custom = true
   }
 
-  // Zero-padding the month number
   let month-int = datetime.today().month()
   let month-int-string = [#month-int]
   if month-int <= 9 {
       month-int-string = [0] + month-int-string
   }
-
-  // Zero-padding the day number
+  
   let day-int = datetime.today().day()
   let day-int-string = [#day-int]
   if day-int <= 9 {
